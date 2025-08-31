@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Header from "./components/Header";
+import LandingPage from "./pages/LandingPage";
+import AboutPage from "./pages/AboutPage";
+import BlogPage from "./pages/BlogPage";
+import NotFound from "./pages/NotFound";
+import ContactPage from "./pages/ContactPage";
+import Footer from "./components/Footer";
+import BookingsPage from "./pages/BookingsPage";
+import PartnershipsPage from "./pages/PartnershipPage";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/bookings" element={<BookingsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/partnerships" element={<PartnershipsPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
