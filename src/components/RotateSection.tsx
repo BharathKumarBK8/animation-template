@@ -7,6 +7,9 @@ interface RotateSectionProps {
   description: string;
   backgroundImage?: string;
   className?: string;
+  rotateAmount: number;
+  rotateRange: [number, number];
+  opacityRange?: [number, number]; // Optional custom opacity range
 }
 
 const RotateSection: React.FC<RotateSectionProps> = ({
@@ -14,6 +17,9 @@ const RotateSection: React.FC<RotateSectionProps> = ({
   description,
   backgroundImage,
   className = "section rotate-section",
+  rotateAmount,
+  rotateRange,
+  opacityRange = [0, 1], // Default opacity range is from 0 to 1
 }) => {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -21,23 +27,37 @@ const RotateSection: React.FC<RotateSectionProps> = ({
     offset: ["start end", "end start"],
   });
 
-  const { rotateLeft } = useRotateAnimation(scrollYProgress);
+  const { rotateDeg, opacity } = useRotateAnimation(
+    scrollYProgress,
+    0, // Default fromRotate
+    rotateAmount, // Custom toRotate from props
+    rotateRange, // Custom rotate range from props
+    0, // Default fromOpacity
+    1, // Default toOpacity
+    opacityRange // Custom opacity range from props
+  );
 
   return (
     <motion.section ref={ref} className={className}>
       <motion.div
         className="rotate-bg"
         style={{
-          rotate: rotateLeft,
+          rotate: rotateDeg, // Applying the rotating degree
+          opacity: opacity, // Applying the opacity animation
           backgroundImage: backgroundImage
             ? `url(${backgroundImage})`
-            : undefined,
+            : undefined, // Conditionally set background image
         }}
       />
-      <div className="rotate-content">
+      <motion.div
+        className="rotate-content"
+        style={{
+          opacity: opacity, // Apply opacity to the content
+        }}
+      >
         <h2>{title}</h2>
         <p>{description}</p>
-      </div>
+      </motion.div>
     </motion.section>
   );
 };

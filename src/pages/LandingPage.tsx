@@ -14,6 +14,9 @@ const LandingPage: React.FC = () => {
       <RotateSection
         title="Explore the Universe"
         description="Discover new worlds as they spin into view"
+        rotateAmount={-45}
+        rotateRange={[0, 0.3]}
+        opacityRange={[0, 0]}
       />
       <AlternatingSection
         items={[

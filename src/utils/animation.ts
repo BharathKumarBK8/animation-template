@@ -7,8 +7,20 @@ export const useHeroAnimations = (scrollYProgress: MotionValue<number>) => ({
   textOpacity: useTransform(scrollYProgress, [0, 0.8], [1, 0.3]),
 });
 
-export const useRotateAnimation = (scrollYProgress: MotionValue<number>) => ({
-  rotateLeft: useTransform(scrollYProgress, [0, 0.3], [0, -45]),
+export const useRotateAnimation = (
+  scrollYProgress: MotionValue<number>,
+  fromRotate = 0,
+  toRotate = -45,
+  rotateRange = [0, 0.3],
+  fromOpacity = 0,
+  toOpacity = 1,
+  opacityRange = [0, 1]
+) => ({
+  rotateDeg: useTransform(scrollYProgress, rotateRange, [fromRotate, toRotate]),
+  opacity: useTransform(scrollYProgress, opacityRange, [
+    fromOpacity,
+    toOpacity,
+  ]),
 });
 
 export const useDualEffectAnimations = (
