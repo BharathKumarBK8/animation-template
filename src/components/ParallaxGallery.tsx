@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useScroll, motion } from "framer-motion";
-import { useParallaxGalleryAnimations } from "../utils/animation";
+import { useParallaxGalleryAnimations } from "../utils/animationHooks";
 interface ParallaxGalleryProps {
   images: Array<{
     src: string;

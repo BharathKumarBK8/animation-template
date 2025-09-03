@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useScroll, motion } from "framer-motion";
-import { useSubsectionAnimations } from "../utils/animation";
+import { useSubsectionAnimations } from "../utils/animationHooks";
 
 const SubsectionItem: React.FC<{
   image: string;
