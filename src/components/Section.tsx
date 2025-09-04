@@ -1,62 +1,28 @@
 import { useRef, ReactNode, CSSProperties } from "react";
 import { useScroll, motion } from "framer-motion";
-import {
-  useScale,
-  useTranslateY,
-  useOpacity,
-  useZoomAnimation,
-  useRotateAnimation,
-} from "../utils/animationHooks";
+import { useScrollAnimation, AnimationType } from "../utils/animationHooks";
 
 interface SectionProps {
   children?: ReactNode;
   className?: string;
   style?: CSSProperties;
-  backgroundAnimationType?:
-    | "scale"
-    | "translateY"
-    | "opacity"
-    | "zoom"
-    | "rotate"
-    | "scaleAndTranslateY"
-    | "translateYAndOpacity"
-    | "none";
+  backgroundAnimation?: AnimationType;
+  contentAnimation?: AnimationType;
   backgroundClassName?: string;
   backgroundStyle?: CSSProperties;
-  contentAnimationType?:
-    | "scale"
-    | "translateY"
-    | "opacity"
-    | "zoom"
-    | "rotate"
-    | "scaleAndTranslateY"
-    | "translateYAndOpacity"
-    | "none";
   contentClassName?: string;
   contentStyle?: CSSProperties;
   backgroundImage?: string;
   backgroundElement?: ReactNode;
   scrollOffset?: any;
-  backgroundInputRange?: [number, number];
-  contentInputRange?: [number, number];
-  backgroundScaleRange?: [number, number];
-  backgroundYRange?: [number, number];
-  backgroundOpacityRange?: [number, number];
-  backgroundRotateRange?: [number, number];
-  backgroundFromRotate?: number;
-  backgroundToRotate?: number;
-  contentScaleRange?: [number, number];
-  contentYRange?: [number, number];
-  contentOpacityRange?: [number, number];
-  contentRotateRange?: [number, number];
-  contentFromRotate?: number;
-  contentToRotate?: number;
+  useWhileInView?: boolean;
+  once?: boolean;
 }
 
 const Section: React.FC<SectionProps> = ({
   children,
-  backgroundAnimationType,
-  contentAnimationType,
+  backgroundAnimation = AnimationType.NONE,
+  contentAnimation = AnimationType.NONE,
   className,
   style,
   backgroundClassName,
@@ -66,20 +32,8 @@ const Section: React.FC<SectionProps> = ({
   backgroundImage,
   backgroundElement,
   scrollOffset,
-  backgroundInputRange = [0, 1],
-  contentInputRange = [0, 1],
-  backgroundScaleRange = [1, 1],
-  backgroundYRange = [0, 0],
-  backgroundOpacityRange = [1, 1],
-  backgroundRotateRange = [0, 0.3],
-  backgroundFromRotate = 0,
-  backgroundToRotate = 0,
-  contentScaleRange = [1, 1],
-  contentYRange = [0, 0],
-  contentOpacityRange = [1, 1],
-  contentRotateRange = [0, 0.3],
-  contentFromRotate = 0,
-  contentToRotate = 0,
+  useWhileInView = false,
+  once = true,
 }) => {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -87,156 +41,140 @@ const Section: React.FC<SectionProps> = ({
     offset: scrollOffset,
   });
 
-  // Always call all hooks with default values
-  const bgScale = useScale(
-    scrollYProgress,
-    backgroundInputRange,
-    backgroundScaleRange
+  const backgroundAnimationStyle = useScrollAnimation(
+    backgroundAnimation,
+    scrollYProgress
   );
-  const bgY = useTranslateY(
-    scrollYProgress,
-    backgroundInputRange,
-    backgroundYRange
-  );
-  const bgOpacity = useOpacity(
-    scrollYProgress,
-    backgroundInputRange,
-    backgroundOpacityRange
-  );
-  const bgZoomAnimation = useZoomAnimation(
-    scrollYProgress,
-    backgroundInputRange,
-    backgroundScaleRange,
-    backgroundOpacityRange
-  );
-  const bgRotateAnimation = useRotateAnimation(
-    scrollYProgress,
-    backgroundFromRotate,
-    backgroundToRotate,
-    backgroundRotateRange,
-    backgroundOpacityRange[0],
-    backgroundOpacityRange[1],
-    backgroundInputRange
+  const contentAnimationStyle = useScrollAnimation(
+    contentAnimation,
+    scrollYProgress
   );
 
-  const contentScale = useScale(
-    scrollYProgress,
-    contentInputRange,
-    contentScaleRange
-  );
-  const contentY = useTranslateY(
-    scrollYProgress,
-    contentInputRange,
-    contentYRange
-  );
-  const contentOpacity = useOpacity(
-    scrollYProgress,
-    contentInputRange,
-    contentOpacityRange
-  );
-  const contentZoomAnimation = useZoomAnimation(
-    scrollYProgress,
-    contentInputRange,
-    contentScaleRange,
-    contentOpacityRange
-  );
-  const contentRotateAnimation = useRotateAnimation(
-    scrollYProgress,
-    contentFromRotate,
-    contentToRotate,
-    contentRotateRange,
-    contentOpacityRange[0],
-    contentOpacityRange[1],
-    contentInputRange
-  );
-
-  const getBackgroundAnimationStyle = () => {
-    switch (backgroundAnimationType) {
-      case "scale":
-        return { scale: bgScale };
-      case "translateY":
-        return { y: bgY };
-      case "opacity":
-        return { opacity: bgOpacity };
-      case "zoom":
-        return bgZoomAnimation;
-      case "rotate":
+  const getWhileInViewVariants = (animationType: AnimationType) => {
+    switch (animationType) {
+      case AnimationType.FADE_IN:
+        return { hidden: { opacity: 0 }, visible: { opacity: 1 } };
+      case AnimationType.SLIDE_UP:
+        return { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
+      case AnimationType.SLIDE_DOWN:
         return {
-          rotate: bgRotateAnimation.rotateDeg,
-          opacity: bgRotateAnimation.opacity,
+          hidden: { opacity: 0, y: -50 },
+          visible: { opacity: 1, y: 0 },
         };
-      case "scaleAndTranslateY":
-        return { scale: bgScale, y: bgY };
-      case "translateYAndOpacity":
-        return { y: bgY, opacity: bgOpacity };
-      default:
-        return {};
-    }
-  };
-
-  const getContentAnimationStyle = () => {
-    switch (contentAnimationType) {
-      case "scale":
-        return { scale: contentScale };
-      case "translateY":
-        return { y: contentY };
-      case "opacity":
-        return { opacity: contentOpacity };
-      case "zoom":
-        return contentZoomAnimation;
-      case "rotate":
+      case AnimationType.ZOOM_IN:
         return {
-          opacity: contentRotateAnimation.opacity,
-          rotate: contentRotateAnimation.rotateDeg,
+          hidden: { opacity: 0, scale: 0.8 },
+          visible: { opacity: 1, scale: 1 },
         };
-      case "scaleAndTranslateY":
-        return { scale: contentScale, y: contentY };
-      case "translateYAndOpacity":
-        return { y: contentY, opacity: contentOpacity };
+      case AnimationType.ROTATE_X_3D:
+        return {
+          hidden: { opacity: 0, rotateX: 90, transformPerspective: 1000 },
+          visible: { opacity: 1, rotateX: 0, transformPerspective: 1000 },
+        };
+      case AnimationType.ROTATE_Y_3D:
+        return {
+          hidden: { opacity: 0, rotateY: 90, transformPerspective: 1000 },
+          visible: { opacity: 1, rotateY: 0, transformPerspective: 1000 },
+        };
+      case AnimationType.FLIP_CARD:
+        return {
+          hidden: { opacity: 0, rotateY: 180, transformPerspective: 1000 },
+          visible: { opacity: 1, rotateY: 0, transformPerspective: 1000 },
+        };
+      case AnimationType.TWIST_3D:
+        return {
+          hidden: {
+            opacity: 0,
+            rotateZ: 180,
+            scale: 0.5,
+            transformPerspective: 800,
+          },
+          visible: {
+            opacity: 1,
+            rotateZ: 0,
+            scale: 1,
+            transformPerspective: 800,
+          },
+        };
+      case AnimationType.FLOATING_3D:
+        return {
+          hidden: {
+            opacity: 0,
+            y: 20,
+            rotateX: -10,
+            scale: 0.9,
+            transformPerspective: 600,
+          },
+          visible: {
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            scale: 1,
+            transformPerspective: 600,
+          },
+        };
+      case AnimationType.PERSPECTIVE_TILT:
+        return {
+          hidden: {
+            opacity: 0,
+            rotateX: 45,
+            rotateY: 15,
+            transformPerspective: 800,
+          },
+          visible: {
+            opacity: 1,
+            rotateX: 0,
+            rotateY: 0,
+            transformPerspective: 800,
+          },
+        };
       default:
-        return {};
+        return { hidden: { opacity: 0 }, visible: { opacity: 1 } };
     }
   };
 
   return (
     <motion.section ref={ref} className={className} style={style}>
-      {/* Background Layer */}
       {(backgroundClassName || backgroundImage || backgroundElement) && (
         <motion.div
           className={backgroundClassName}
           style={{
             ...backgroundStyle,
-            ...getBackgroundAnimationStyle(),
+            ...(useWhileInView ? {} : backgroundAnimationStyle),
             backgroundImage: backgroundImage
               ? `url(${backgroundImage})`
               : undefined,
           }}
+          {...(useWhileInView &&
+            backgroundAnimation !== AnimationType.NONE && {
+              variants: getWhileInViewVariants(backgroundAnimation),
+              initial: "hidden",
+              whileInView: "visible",
+              viewport: { once },
+              transition: { duration: 0.6, ease: "easeOut" },
+            })}
         >
           {backgroundElement}
         </motion.div>
       )}
 
-      {/* Content Layer */}
-      {contentClassName ? (
-        <motion.div
-          className={contentClassName}
-          style={{
-            ...contentStyle,
-            ...getContentAnimationStyle(),
-          }}
-        >
-          {children}
-        </motion.div>
-      ) : (
-        <motion.div
-          style={{
-            ...contentStyle,
-            ...getContentAnimationStyle(),
-          }}
-        >
-          {children}
-        </motion.div>
-      )}
+      <motion.div
+        className={contentClassName}
+        style={{
+          ...contentStyle,
+          ...(useWhileInView ? {} : contentAnimationStyle),
+        }}
+        {...(useWhileInView &&
+          contentAnimation !== AnimationType.NONE && {
+            variants: getWhileInViewVariants(contentAnimation),
+            initial: "hidden",
+            whileInView: "visible",
+            viewport: { once },
+            transition: { duration: 0.6, ease: "easeOut" },
+          })}
+      >
+        {children}
+      </motion.div>
     </motion.section>
   );
 };

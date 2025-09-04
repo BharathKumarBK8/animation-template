@@ -1,10 +1,12 @@
 import { useRef, useEffect, useState } from "react";
-import { useScroll, motion, useMotionValue, useSpring } from "framer-motion";
 import {
-  useOpacity,
-  useScale,
-  useTranslateY,
-} from "../../utils/animationHooks";
+  useScroll,
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  MotionValue,
+} from "framer-motion";
 import "./NumberReveal.css";
 
 interface NumberRevealProps {
@@ -28,13 +30,21 @@ const NumberReveal: React.FC<NumberRevealProps> = ({
     offset: ["start end", "start start"],
   });
 
-  const opacity = useOpacity(scrollYProgress, [0, 0.3], [0, 1]);
-  const y = useTranslateY(scrollYProgress, [0, 0.3], [30, 0]);
-  const scale = useScale(scrollYProgress, [0, 0.3], [0.9, 1]);
+  // Define transforms directly here:
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  const y = useTransform(scrollYProgress, [0, 0.3], [30, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.3], [0.9, 1]);
 
   return (
     <motion.section ref={ref} className={className}>
-      <motion.div className="card" style={{ opacity, y, scale }}>
+      <motion.div
+        className="card"
+        style={{
+          opacity,
+          y,
+          scale,
+        }}
+      >
         <h2>{title}</h2>
         <div className="stats-grid">
           {stats.map((stat, index) => (
@@ -58,7 +68,7 @@ interface AnimatedNumberProps {
   label: string;
   suffix?: string;
   delay: number;
-  scrollProgress: any;
+  scrollProgress: MotionValue<number>;
 }
 
 const AnimatedNumber: React.FC<AnimatedNumberProps> = ({
@@ -70,11 +80,18 @@ const AnimatedNumber: React.FC<AnimatedNumberProps> = ({
 }) => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { duration: 2000 });
+
+  // Correct spring config (no duration)
+  const springValue = useSpring(motionValue, {
+    damping: 20,
+    stiffness: 100,
+    mass: 1,
+  });
+
   const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
-    const unsubscribe = scrollProgress.onChange((latest: number) => {
+    const unsubscribe = scrollProgress.on("change", (latest) => {
       if (latest > 0.2 && !hasAnimated) {
         setHasAnimated(true);
         setTimeout(() => {
@@ -83,15 +100,15 @@ const AnimatedNumber: React.FC<AnimatedNumberProps> = ({
       }
     });
 
-    return unsubscribe;
+    return () => unsubscribe();
   }, [scrollProgress, value, delay, hasAnimated, motionValue]);
 
   useEffect(() => {
-    const unsubscribe = springValue.onChange((latest) => {
+    const unsubscribe = springValue.on("change", (latest) => {
       setDisplayValue(Math.round(latest));
     });
 
-    return unsubscribe;
+    return () => unsubscribe();
   }, [springValue]);
 
   return (

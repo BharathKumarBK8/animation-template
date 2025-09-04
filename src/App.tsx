@@ -11,9 +11,8 @@ import NotFound from "./pages/NotFound";
 import ContactPage from "./pages/ContactPage";
 import Footer from "./components/Footer/Footer";
 import BookingsPage from "./pages/BookingsPage";
-import PartnershipsPage from "./pages/PartnershipPage";
-import SamplePage from "./pages/SamplePage";
 import Services from "./pages/Services";
+import ThreeDShowcase from "./pages/Three3DShowcase";
 
 const App: React.FC = () => {
   return (
@@ -24,7 +23,7 @@ const App: React.FC = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/services" element={<Services />} />
         <Route path="/bookings" element={<BookingsPage />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<ThreeDShowcase />} />
       </Routes>
       <Footer />
     </div>

@@ -1,22 +1,19 @@
 import React from "react";
 import Section from "../components/Section";
 import "./BookingsPage.css";
+import { AnimationType } from "../utils/animationHooks";
 
 const Bookings: React.FC = () => {
   return (
     <div>
       <Section
-        contentAnimationType="translateY"
+        contentAnimation={AnimationType.TRANSLATE_Y}
         contentClassName="content-translateY"
         className="section section-hero"
         backgroundClassName="background"
         backgroundStyle={{ inset: "-10%", backgroundPosition: "center top" }}
-        backgroundAnimationType="scaleAndTranslateY"
+        backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
         scrollOffset={["start end", "end start"]}
-        backgroundScaleRange={[1.2, 1]}
-        backgroundYRange={[0, -100]}
-        contentYRange={[0, -150]}
-        contentInputRange={[0, 0.8]}
       >
         <h1>Book an Appointment</h1>
         <p>
@@ -29,9 +26,7 @@ const Bookings: React.FC = () => {
       <Section
         className="section"
         contentClassName="card"
-        contentAnimationType="scaleAndTranslateY"
-        contentYRange={[50, 0]}
-        contentOpacityRange={[0, 1]}
+        contentAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
       >
         {/* Replace with your actual form or 3rd-party embed (like Calendly, Zocdoc, etc.) */}
         <form className="booking-form">
@@ -71,10 +66,8 @@ const Bookings: React.FC = () => {
       <Section
         className="section"
         contentClassName="content-callout"
-        contentAnimationType="translateYAndOpacity"
+        contentAnimation={AnimationType.TRANSLATE_Y_AND_OPACITY}
         scrollOffset={["start end", "end start"]}
-        contentYRange={[30, 0]}
-        contentOpacityRange={[0, 1]}
       >
         <h2 style={{ color: "white" }}>Prefer to call?</h2>
         <p style={{ color: "whitesmoke" }}>

@@ -6,23 +6,20 @@ import img3 from "../assets/img3.jpg";
 import ParallaxGallery from "../components/ParallaxGallery/ParallaxGallery";
 import NumberReveal from "../components/NumberReveal/NumberReveal";
 import Section from "../components/Section";
+import { AnimationType } from "../utils/animationHooks";
 
 const LandingPage: React.FC = () => {
   return (
     <>
       <Section
-        contentAnimationType="translateY"
+        contentAnimation={AnimationType.TRANSLATE_Y}
         contentClassName="content-translateY"
         className="section section-hero"
         backgroundImage={heroBg}
         backgroundStyle={{ inset: "-12%", backgroundPosition: "center" }}
         backgroundClassName="background"
-        backgroundAnimationType="scaleAndTranslateY"
+        backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
         scrollOffset={["start start", "end start"]}
-        backgroundScaleRange={[1.2, 1]}
-        backgroundYRange={[0, -100]}
-        contentYRange={[0, -150]}
-        contentInputRange={[0, 0.8]}
       >
         <h1 style={{ color: "white" }}>Brighten Your Smile Today</h1>
         <p style={{ color: "whitesmoke" }}>
@@ -32,7 +29,7 @@ const LandingPage: React.FC = () => {
       <Section
         className="section"
         contentClassName="content-grid"
-        contentAnimationType="scaleAndTranslateY"
+        contentAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
         scrollOffset={["start end", "end start"]}
       >
         <div className="card">
@@ -52,7 +49,7 @@ const LandingPage: React.FC = () => {
         className="section"
         style={{ background: "linear-gradient(180deg, #EDEDE9, #F0EFEF)" }}
         contentClassName="content-testimonial"
-        contentAnimationType="opacity"
+        contentAnimation={AnimationType.OPACITY}
         scrollOffset={["start end", "end start"]}
       >
         <AutoPaginatedTestimonials />
@@ -79,7 +76,7 @@ const LandingPage: React.FC = () => {
       <Section
         className="section"
         contentClassName="content-callout"
-        contentAnimationType="zoom"
+        contentAnimation={AnimationType.ZOOM_IN}
         scrollOffset={["start end", "end start"]}
       >
         <h2 style={{ color: "white" }}>Ready to Smile Brighter?</h2>
@@ -91,9 +88,8 @@ const LandingPage: React.FC = () => {
       <Section
         className="section"
         contentClassName="content-translateY"
-        contentAnimationType="translateY"
+        contentAnimation={AnimationType.TRANSLATE_Y}
         scrollOffset={["start end", "end start"]}
-        contentYRange={[50, 0]}
       >
         <h2>Visit Us</h2>
         <p>

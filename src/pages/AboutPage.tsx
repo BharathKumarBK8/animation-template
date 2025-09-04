@@ -2,12 +2,13 @@ import React from "react";
 import Section from "../components/Section";
 import StaggeredReveal from "../components/StaggeredReveal/StaggeredReveal";
 import sampleDoctor from "../assets/sample-doctor.jpg";
+import { AnimationType } from "../utils/animationHooks";
 
 const About: React.FC = () => {
   return (
     <div>
       <Section
-        contentAnimationType="translateY"
+        contentAnimation={AnimationType.TRANSLATE_Y}
         contentClassName="content-translateY"
         contentStyle={{
           alignItems: "end",
@@ -19,12 +20,8 @@ const About: React.FC = () => {
         backgroundImage={sampleDoctor}
         backgroundClassName="background"
         backgroundStyle={{ inset: "-10%", backgroundPosition: "center top" }}
-        backgroundAnimationType="scaleAndTranslateY"
+        backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
         scrollOffset={["start end", "end start"]}
-        backgroundScaleRange={[1.2, 1]}
-        backgroundYRange={[0, -100]}
-        contentYRange={[0, -150]}
-        contentInputRange={[0, 0.8]}
       >
         <h1 style={{ color: "white" }}>Meet Dr.Joe</h1>
         <p style={{ color: "whitesmoke" }}>
@@ -34,13 +31,10 @@ const About: React.FC = () => {
 
       {/* Biography Section */}
       <Section
-        contentAnimationType="translateYAndOpacity"
+        contentAnimation={AnimationType.TRANSLATE_Y_AND_OPACITY}
         className="section"
         scrollOffset={["start end", "end start"]}
         contentClassName="card"
-        contentInputRange={[0, 0.5]}
-        contentYRange={[50, 0]}
-        contentOpacityRange={[0, 1]}
       >
         <h2>About Dr. Joe</h2>
         <p>
@@ -53,13 +47,10 @@ const About: React.FC = () => {
 
       {/* Mission Section */}
       <Section
-        contentAnimationType="translateYAndOpacity"
+        contentAnimation={AnimationType.TRANSLATE_Y_AND_OPACITY}
         className="section"
         scrollOffset={["start end", "end start"]}
         contentClassName="card"
-        contentInputRange={[0, 0.5]}
-        contentYRange={[50, 0]}
-        contentOpacityRange={[0, 1]}
       >
         <h2>Our Mission</h2>
         <p>

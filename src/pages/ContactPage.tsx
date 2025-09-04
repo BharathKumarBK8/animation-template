@@ -1,5 +1,6 @@
 import React from "react";
 import Section from "../components/Section";
+import { AnimationType } from "../utils/animationHooks";
 
 const Contact: React.FC = () => {
   return (
@@ -8,9 +9,7 @@ const Contact: React.FC = () => {
       <Section
         className="section"
         contentClassName="content-center"
-        contentAnimationType="translateYAndOpacity"
-        contentYRange={[40, 0]}
-        contentOpacityRange={[0, 1]}
+        contentAnimation={AnimationType.TRANSLATE_Y_AND_OPACITY}
       >
         <h1>Contact Us</h1>
         <p>Have a question or need to reach us? We’re here to help.</p>
@@ -20,7 +19,7 @@ const Contact: React.FC = () => {
       <Section
         className="section"
         contentClassName="content-grid"
-        contentAnimationType="scaleAndTranslateY"
+        contentAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
         scrollOffset={["start end", "end start"]}
       >
         <div className="card">
@@ -45,9 +44,7 @@ const Contact: React.FC = () => {
       <Section
         className="section"
         contentClassName="content-plain"
-        contentAnimationType="translateYAndOpacity"
-        contentYRange={[30, 0]}
-        contentOpacityRange={[0, 1]}
+        contentAnimation={AnimationType.TRANSLATE_Y_AND_OPACITY}
       >
         <form className="booking-form">
           <label>
@@ -72,8 +69,7 @@ const Contact: React.FC = () => {
       <Section
         className="section"
         contentClassName="content-plain"
-        contentAnimationType="opacity"
-        contentOpacityRange={[0, 1]}
+        contentAnimation={AnimationType.OPACITY}
       >
         <iframe
           title="Google Map"
