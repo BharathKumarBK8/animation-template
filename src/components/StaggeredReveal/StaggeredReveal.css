@@ -10,7 +10,7 @@
 }
 .list {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* grid-template-columns: repeat(4, minmax(0, 1fr)); */
   gap: clamp(0.75rem, 2vw, 1rem);
   margin-top: 1.25rem;
 }

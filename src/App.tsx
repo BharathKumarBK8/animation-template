@@ -7,13 +7,13 @@ import "./css/Background.css";
 import Header from "./components/Header/Header";
 import LandingPage from "./pages/LandingPage";
 import AboutPage from "./pages/AboutPage";
-import BlogPage from "./pages/BlogPage";
 import NotFound from "./pages/NotFound";
 import ContactPage from "./pages/ContactPage";
 import Footer from "./components/Footer/Footer";
 import BookingsPage from "./pages/BookingsPage";
 import PartnershipsPage from "./pages/PartnershipPage";
 import SamplePage from "./pages/SamplePage";
+import Services from "./pages/Services";
 
 const App: React.FC = () => {
   return (
@@ -22,10 +22,8 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/bookings" element={<BookingsPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/partnerships" element={<PartnershipsPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

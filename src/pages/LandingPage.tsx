@@ -15,6 +15,7 @@ const LandingPage: React.FC = () => {
         contentClassName="content-translateY"
         className="section section-hero"
         backgroundImage={heroBg}
+        backgroundStyle={{ inset: "-12%", backgroundPosition: "center" }}
         backgroundClassName="background"
         backgroundAnimationType="scaleAndTranslateY"
         scrollOffset={["start start", "end start"]}
