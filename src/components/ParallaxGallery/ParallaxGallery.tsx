@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import { useScroll, motion } from "framer-motion";
-import { useParallaxGalleryAnimations } from "../utils/animationHooks";
+import { useParallaxGalleryAnimations } from "../../utils/animationHooks";
+import "./ParallaxGallery.css";
 interface ParallaxGalleryProps {
+  title?: string;
+  description?: string;
   images: Array<{
     src: string;
     alt: string;
@@ -11,8 +14,10 @@ interface ParallaxGalleryProps {
 }
 
 const ParallaxGallery: React.FC<ParallaxGalleryProps> = ({
+  title,
+  description,
   images,
-  className = "section portfolio",
+  className = "portfolio",
 }) => {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -38,6 +43,8 @@ const ParallaxGallery: React.FC<ParallaxGalleryProps> = ({
 
   return (
     <motion.section ref={ref} className={className}>
+      <h2>{title}</h2>
+      <p>{description}</p>
       {images.map((image, index) => (
         <motion.img
           key={index}

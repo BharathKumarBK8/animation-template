@@ -1,27 +1,28 @@
 import React from "react";
+import "./Footer.css";
 
 const Footer: React.FC = () => {
   return (
     <div className="footer">
       <div className="footer-content">
-        <div>© 2025 Cosmos. All rights reserved.</div>
+        <div>© 2025 Dr.Joe's. All rights reserved.</div>
         <div className="social-links">
           <a
-            href="https://instagram.com/cosmos"
+            href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             <i className="bi bi-instagram"></i>
           </a>
           <a
-            href="https://facebook.com/cosmos"
+            href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             <i className="bi bi-facebook"></i>
           </a>
           <a
-            href="https://youtube.com/cosmos"
+            href="https://youtube.com"
             target="_blank"
             rel="noopener noreferrer"
           >

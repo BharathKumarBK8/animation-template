@@ -1,6 +1,11 @@
 import { useRef, useEffect, useState } from "react";
 import { useScroll, motion, useMotionValue, useSpring } from "framer-motion";
-import { useOpacity, useScale, useTranslateY } from "../utils/animationHooks";
+import {
+  useOpacity,
+  useScale,
+  useTranslateY,
+} from "../../utils/animationHooks";
+import "./NumberReveal.css";
 
 interface NumberRevealProps {
   title?: string;

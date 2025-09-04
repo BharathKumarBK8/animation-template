@@ -7,7 +7,6 @@ import {
   useZoomAnimation,
   useRotateAnimation,
 } from "../utils/animationHooks";
-import "./Section.css";
 
 interface SectionProps {
   children?: ReactNode;
@@ -186,7 +185,10 @@ const Section: React.FC<SectionProps> = ({
       case "zoom":
         return contentZoomAnimation;
       case "rotate":
-        return { opacity: contentRotateAnimation.opacity };
+        return {
+          opacity: contentRotateAnimation.opacity,
+          rotate: contentRotateAnimation.rotateDeg,
+        };
       case "scaleAndTranslateY":
         return { scale: contentScale, y: contentY };
       case "translateYAndOpacity":

@@ -1,15 +1,19 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
+import "./css/Content.css";
+import "./css/Section.css";
+import "./css/Background.css";
+import Header from "./components/Header/Header";
 import LandingPage from "./pages/LandingPage";
 import AboutPage from "./pages/AboutPage";
 import BlogPage from "./pages/BlogPage";
 import NotFound from "./pages/NotFound";
 import ContactPage from "./pages/ContactPage";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 import BookingsPage from "./pages/BookingsPage";
 import PartnershipsPage from "./pages/PartnershipPage";
+import SamplePage from "./pages/SamplePage";
 
 const App: React.FC = () => {
   return (

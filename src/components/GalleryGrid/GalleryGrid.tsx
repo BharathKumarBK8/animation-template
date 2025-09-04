@@ -1,4 +1,5 @@
 import React from "react";
+import "./GalleryGrid.css";
 
 interface GalleryItem {
   id: number;

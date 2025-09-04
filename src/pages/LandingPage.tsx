@@ -1,12 +1,10 @@
-import ParallaxGallery from "../components/ParallaxGallery";
-import StaggeredReveal from "../components/StaggeredReveal";
-import AlternatingSection from "../components/AlternatingSection";
-import NumberReveal from "../components/NumberReveal";
-import heroBg from "../assets/hero-bg.png";
-import img1 from "../assets/img-1.jpg";
-import img2 from "../assets/img-2.jpg";
-import img3 from "../assets/img-3.jpg";
-import section1 from "../assets/section-1.jpg";
+import AutoPaginatedTestimonials from "../components/AutoPaginatedTestimonials";
+import heroBg from "../assets/hero-bg.jpg";
+import img1 from "../assets/img1.jpg";
+import img2 from "../assets/img2.jpg";
+import img3 from "../assets/img3.jpg";
+import ParallaxGallery from "../components/ParallaxGallery/ParallaxGallery";
+import NumberReveal from "../components/NumberReveal/NumberReveal";
 import Section from "../components/Section";
 
 const LandingPage: React.FC = () => {
@@ -14,8 +12,8 @@ const LandingPage: React.FC = () => {
     <>
       <Section
         contentAnimationType="translateY"
-        contentClassName="translateY-content"
-        className="section hero"
+        contentClassName="content-translateY"
+        className="section section-hero"
         backgroundImage={heroBg}
         backgroundClassName="background"
         backgroundAnimationType="scaleAndTranslateY"
@@ -25,163 +23,102 @@ const LandingPage: React.FC = () => {
         contentYRange={[0, -150]}
         contentInputRange={[0, 0.8]}
       >
-        <h1>
-          JOURNEY <span>THROUGH</span> STARS & PLANETS
-        </h1>
-      </Section>
-      <Section
-        className="section"
-        backgroundClassName="background"
-        style={{
-          position: "relative",
-          overflow: "hidden",
-        }}
-        backgroundImage={img1}
-        backgroundAnimationType="zoom"
-        backgroundStyle={{
-          position: "absolute",
-          inset: 5,
-          zIndex: -1,
-          willChange: "transform",
-          overflow: "hidden",
-        }}
-        contentClassName="card"
-        contentAnimationType="zoom"
-        scrollOffset={["start end", "end start"]}
-        backgroundScaleRange={[1, 1.2]}
-        backgroundOpacityRange={[0.5, 1]}
-        backgroundInputRange={[0, 1]}
-        contentInputRange={[0, 1]}
-        contentScaleRange={[1.2, 0.6]}
-        contentOpacityRange={[0.5, 1]}
-      >
-        <h2>Zoom Animation</h2>
-        <p>Custom zoom effect with configurable ranges.</p>
-      </Section>
-      <Section
-        backgroundAnimationType="rotate"
-        contentAnimationType="opacity"
-        className="section"
-        style={{
-          position: "relative",
-          overflow: "hidden",
-        }}
-        backgroundClassName="background"
-        backgroundStyle={{
-          position: "absolute",
-          inset: "-20%",
-          zIndex: -1,
-          willChange: "transform",
-        }}
-        contentStyle={{
-          position: "relative",
-          zIndex: 1,
-        }}
-        backgroundImage={img2}
-        scrollOffset={["start end", "end start"]}
-        backgroundFromRotate={0}
-        backgroundToRotate={30}
-        backgroundRotateRange={[0, 0.5]}
-        backgroundInputRange={[0, 1]}
-        contentOpacityRange={[0, 1]}
-      >
-        <h2>Rotating Background + Fading Text</h2>
-        <p>Background rotates while text fades in</p>
-      </Section>
-      <Section
-        className="section"
-        backgroundClassName="background"
-        style={{
-          position: "relative",
-          overflow: "hidden",
-        }}
-        backgroundImage={section1}
-        backgroundAnimationType="scale"
-        backgroundStyle={{
-          position: "absolute",
-          inset: 0,
-          zIndex: -1,
-          willChange: "transform",
-        }}
-        contentClassName="content"
-        contentAnimationType="scale"
-        scrollOffset={["start end", "end start"]}
-        backgroundScaleRange={[1, 1.2]}
-        backgroundInputRange={[0, 1]}
-        contentInputRange={[0, 1]}
-        contentScaleRange={[1, 0.8]}
-      >
-        <h2>Scaling Background + Content</h2>
-        <p>Background scales up while content scales down</p>
-      </Section>
-      <AlternatingSection
-        items={[
-          {
-            image: img1,
-            title: "Mobile Planetarium Setup",
-            description:
-              "Experience the cosmos in our state-of-the-art mobile dome that brings the universe directly to your location with professional setup and immersive visuals.",
-            reverse: false,
-            hasScale: true,
-            hasParallax: true,
-          },
-          {
-            image: img2,
-            title: "Educational Programs",
-            description:
-              "Curriculum-aligned astronomy content designed to inspire and educate students of all ages about space science with interactive learning experiences.",
-            reverse: true,
-            hasScale: true,
-            hasParallax: true,
-          },
-          {
-            image: img3,
-            title: "Community Outreach",
-            description:
-              "Reaching remote communities and schools to make astronomy accessible to everyone, everywhere with our mobile planetarium services.",
-            reverse: false,
-            hasScale: true,
-            hasParallax: true,
-          },
-        ]}
-      />
-
-      <Section
-        className="section"
-        backgroundClassName="background"
-        contentClassName="card"
-        backgroundImage={img2}
-        backgroundAnimationType="zoom"
-        contentAnimationType="translateYAndOpacity"
-        contentYRange={[0, 0]}
-        contentOpacityRange={[1, 1]}
-      >
-        <h1>Welcome to My Page</h1>
-        <p>
-          This is a normal section with a background image and animated content.
+        <h1 style={{ color: "white" }}>Brighten Your Smile Today</h1>
+        <p style={{ color: "whitesmoke" }}>
+          Your trusted family dental care in the heart of the city.
         </p>
       </Section>
-
-      <StaggeredReveal
-        title="Staggered Reveal"
-        items={["Strategy", "Design", "Production", "Delivery"]}
-      />
+      <Section
+        className="section"
+        contentClassName="content-grid"
+        contentAnimationType="scaleAndTranslateY"
+        scrollOffset={["start end", "end start"]}
+      >
+        <div className="card">
+          <h2>General Dentistry</h2>
+          <p>Cleanings, fillings, and routine checkups.</p>
+        </div>
+        <div className="card">
+          <h2>Cosmetic Dentistry</h2>
+          <p>Whitening, veneers, and smile makeovers.</p>
+        </div>
+        <div className="card">
+          <h2>Emergency Services</h2>
+          <p>Same-day appointments for dental emergencies.</p>
+        </div>
+      </Section>
+      <Section
+        className="section"
+        style={{ background: "linear-gradient(180deg, #EDEDE9, #F0EFEF)" }}
+        contentClassName="content-testimonial"
+        contentAnimationType="opacity"
+        scrollOffset={["start end", "end start"]}
+      >
+        <AutoPaginatedTestimonials />
+      </Section>
       <ParallaxGallery
+        title="Our Works"
+        description="A showcase of our recent projects and success stories."
         images={[
           { src: img1, alt: "Image 1", animationType: "img1Y" },
           { src: img2, alt: "Image 2", animationType: "img2Y" },
           { src: img3, alt: "Image 3", animationType: "img3Y" },
         ]}
       />
+
       <NumberReveal
-        title="Our Achievements"
+        title="Our Impact"
         stats={[
-          { value: 1000, label: "Projects", suffix: "+" },
-          { value: 50, label: "Countries" },
-          { value: 99, label: "Success Rate", suffix: "%" },
-          { value: 24, label: "Support", suffix: "/7" },
+          { value: 10, label: "Years Serving the Community", suffix: "+" },
+          { value: 5000, label: "Happy Patients", suffix: "+" },
+          { value: 5, label: "Average Google Rating", suffix: "★" },
         ]}
+        className="section"
       />
+      <Section
+        className="section"
+        contentClassName="content-callout"
+        contentAnimationType="zoom"
+        scrollOffset={["start end", "end start"]}
+      >
+        <h2 style={{ color: "white" }}>Ready to Smile Brighter?</h2>
+        <p style={{ color: "whitesmoke" }}>
+          Book your appointment online or call us today!
+        </p>
+        <button className="btn-primary">Book Now</button>
+      </Section>
+      <Section
+        className="section"
+        contentClassName="content-translateY"
+        contentAnimationType="translateY"
+        scrollOffset={["start end", "end start"]}
+        contentYRange={[50, 0]}
+      >
+        <h2>Visit Us</h2>
+        <p>
+          📍 42/2, Alagar Kovil Main Rd, Appanthirupathi, Madurai, Tamil Nadu
+          625301
+        </p>
+        <p>📞 (+91) 99451 49151</p>
+        <ul style={{ listStyleType: "none", padding: 0, marginTop: "1rem" }}>
+          <li>
+            🕒 <strong>Monday - Saturday:</strong> 10:00 AM – 9:00 PM
+          </li>
+          <li>
+            🚫 <strong>Sunday:</strong> Closed
+          </li>
+        </ul>
+
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.9427869599717!2d78.19355829999999!3d10.021580199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c702d07a7ecb%3A0x923cdd3fa082bc1d!2sDr.JOE&#39;s%20Dental%20Hospital!5e0!3m2!1sen!2sin!4v1756906659216!5m2!1sen!2sin"
+          width="100%"
+          height="300"
+          style={{ border: 0, borderRadius: "12px", marginTop: "1rem" }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </Section>
     </>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import "./Header.css";
 
 const Header: React.FC = () => {
   const { scrollY } = useScroll();
@@ -20,16 +21,15 @@ const Header: React.FC = () => {
       <div className="header-content">
         <div className="logo">
           <span onClick={handleLogoClick} style={{ cursor: "pointer" }}>
-            Cosmos
+            Dr. Joe's
           </span>
         </div>
         <nav className="nav">
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/bookings">Bookings</Link>
+          <Link to="/services">Services</Link>
+          <Link to="/bookings">Book Appointment</Link>
           <Link to="/contact">Contact</Link>
-          <Link to="/partnerships">Partnerships</Link>
         </nav>
       </div>
     </motion.header>

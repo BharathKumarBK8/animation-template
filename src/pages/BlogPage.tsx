@@ -1,5 +1,5 @@
 import React from "react";
-import GalleryGrid from "../components/GalleryGrid";
+import GalleryGrid from "../components/GalleryGrid/GalleryGrid";
 import img1 from "../assets/img-1.jpg";
 import img2 from "../assets/img-2.jpg";
 import img3 from "../assets/img-3.jpg";

@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useScroll, motion } from "framer-motion";
-import { useStaggeredRevealAnimations } from "../utils/animationHooks";
+import { useStaggeredRevealAnimations } from "../../utils/animationHooks";
+import "./StaggeredReveal.css";
 
 interface StaggeredRevealProps {
   title: string;

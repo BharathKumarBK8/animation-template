@@ -5,6 +5,7 @@ import heroBg from "../assets/hero-bg.png";
 import section1 from "../assets/section-1.jpg";
 import section2 from "../assets/section-2.jpg";
 import section3 from "../assets/section-3.jpg";
+import StaggeredReveal from "../components/StaggeredReveal/StaggeredReveal";
 
 const SamplePage: React.FC = () => {
   return (
@@ -61,13 +62,19 @@ const SamplePage: React.FC = () => {
         <h2>Zoom Background + Slide Text</h2>
         <p>Background zooms out while text slides up</p>
       </Section>
-
+      <StaggeredReveal
+        title="Staggered Reveal"
+        items={["Strategy", "Design", "Production", "Delivery"]}
+      />
       <Section
         backgroundAnimationType="rotate"
-        contentAnimationType="opacity"
+        contentAnimationType="rotate"
         className="section rotate-section"
         backgroundClassName="rotate-bg"
         contentClassName="rotate-content"
+        contentFromRotate={0}
+        contentToRotate={30}
+        contentRotateRange={[0, 0.5]}
         backgroundImage={img2}
         scrollOffset={["start end", "end start"]} // ✅ Add this
         backgroundFromRotate={0} // ✅ Change to 0 (RotateSection default)
@@ -81,7 +88,7 @@ const SamplePage: React.FC = () => {
       </Section>
       <Section
         contentAnimationType="translateY"
-        contentClassName="translateY-content"
+        contentClassName="content-translateY"
         className="section hero"
         backgroundImage={heroBg}
         backgroundClassName="background"
