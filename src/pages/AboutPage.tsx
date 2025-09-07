@@ -9,8 +9,9 @@ const About: React.FC = () => {
     <div>
       <Section
         contentAnimation={AnimationType.TRANSLATE_Y}
-        contentClassName="content-translateY"
         contentStyle={{
+          transition: "transform 0.3s ease",
+          zIndex: "1",
           alignItems: "end",
           display: "flex",
           flexDirection: "column",

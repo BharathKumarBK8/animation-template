@@ -83,26 +83,6 @@
   margin: 0;
   opacity: 0.85;
 }
-/* Content based TranslateY*/
-.content-translateY {
-  position: relative;
-  z-index: 1;
-  transform: translateY(0);
-  transition: transform 0.3s ease;
-}
-
-.content-translateY h2 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin: 0 0 1rem;
-  font-weight: 700;
-}
-
-.content-translateY p {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  opacity: 0.9;
-  margin: 0;
-}
-/*  */
 /*Content based Rotation*/
 .rotate-content {
   position: relative;

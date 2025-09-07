@@ -13,7 +13,10 @@ const LandingPage: React.FC = () => {
     <>
       <Section
         contentAnimation={AnimationType.TRANSLATE_Y}
-        contentClassName="content-translateY"
+        contentStyle={{
+          transition: "transform 0.3s ease",
+          zIndex: "1",
+        }}
         className="section section-hero"
         backgroundImage={heroBg}
         backgroundStyle={{ inset: "-12%", backgroundPosition: "center" }}
@@ -49,7 +52,7 @@ const LandingPage: React.FC = () => {
         className="section"
         style={{ background: "linear-gradient(180deg, #EDEDE9, #F0EFEF)" }}
         contentClassName="content-testimonial"
-        contentAnimation={AnimationType.OPACITY}
+        contentAnimation={AnimationType.NONE}
         scrollOffset={["start end", "end start"]}
       >
         <AutoPaginatedTestimonials />
@@ -87,7 +90,7 @@ const LandingPage: React.FC = () => {
       </Section>
       <Section
         className="section"
-        contentClassName="content-translateY"
+        contentStyle={{ transition: "transform 0.3s ease" }}
         contentAnimation={AnimationType.TRANSLATE_Y}
         scrollOffset={["start end", "end start"]}
       >

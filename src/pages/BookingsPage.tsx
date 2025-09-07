@@ -8,7 +8,7 @@ const Bookings: React.FC = () => {
     <div>
       <Section
         contentAnimation={AnimationType.TRANSLATE_Y}
-        contentClassName="content-translateY"
+        contentStyle={{ transition: "transform 0.3s ease" }}
         className="section section-hero"
         backgroundClassName="background"
         backgroundStyle={{ inset: "-10%", backgroundPosition: "center top" }}
