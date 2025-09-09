@@ -1,27 +1,17 @@
 import React from "react";
 import Section from "../components/Section";
-import { AnimationType } from "../utils/animationHooks";
 
 const Contact: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
-      <Section
-        className="section"
-        contentClassName="content-center"
-        contentAnimation={AnimationType.TRANSLATE_Y_AND_OPACITY}
-      >
+      <Section className="section" content={{ className: "content-center" }}>
         <h1>Contact Us</h1>
         <p>Have a question or need to reach us? We’re here to help.</p>
       </Section>
 
       {/* Contact Info Grid */}
-      <Section
-        className="section"
-        contentClassName="content-grid"
-        contentAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
-        scrollOffset={["start end", "end start"]}
-      >
+      <Section className="section" content={{ className: "content-grid" }}>
         <div className="card">
           <h2>Call Us</h2>
           <p>(123) 456-7890</p>
@@ -41,11 +31,7 @@ const Contact: React.FC = () => {
       </Section>
 
       {/* Contact Form */}
-      <Section
-        className="section"
-        contentClassName="content-plain"
-        contentAnimation={AnimationType.TRANSLATE_Y_AND_OPACITY}
-      >
+      <Section className="section" content={{ className: "content-plain" }}>
         <form className="booking-form">
           <label>
             Name
@@ -66,11 +52,7 @@ const Contact: React.FC = () => {
       </Section>
 
       {/* Optional Google Map */}
-      <Section
-        className="section"
-        contentClassName="content-plain"
-        contentAnimation={AnimationType.OPACITY}
-      >
+      <Section className="section" content={{ className: "content-plain" }}>
         <iframe
           title="Google Map"
           src="https://www.google.com/maps/embed?pb=..." // Replace with your map embed link

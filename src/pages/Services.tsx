@@ -4,7 +4,6 @@ import img4 from "../assets/img4.jpg";
 import img5 from "../assets/img5.jpg";
 import img6 from "../assets/img6.jpg";
 import { useNavigate } from "react-router-dom";
-import { AnimationType } from "../utils/animationHooks";
 
 const Services: React.FC = () => {
   const handleButtonClick = () => {
@@ -15,11 +14,7 @@ const Services: React.FC = () => {
   return (
     <div>
       {/* Hero */}
-      <Section
-        className="section section-hero"
-        contentAnimation={AnimationType.NONE}
-        contentClassName="content-translateY"
-      >
+      <Section className="section section-hero">
         <h1>Our Dental Services</h1>
         <p>
           Whether you need a routine cleaning or a complete smile
@@ -31,19 +26,17 @@ const Services: React.FC = () => {
       <Section
         className="section"
         style={{ overflow: "hidden" }}
-        backgroundImage={img4}
-        backgroundClassName="background"
-        backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
-        scrollOffset={["start start", "end start"]}
-        contentClassName="content-overlay-left"
-        contentStyle={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          padding: "2rem",
+        background={{ className: "background", image: img4 }}
+        content={{
+          className: "content-overlay-left",
+          style: {
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            padding: "2rem",
+          },
         }}
-        contentAnimation={AnimationType.NONE}
       >
         <h2 style={{ color: "white" }}>General Dentistry</h2>
         <p style={{ color: "whitesmoke" }}>
@@ -55,19 +48,17 @@ const Services: React.FC = () => {
       {/* Cosmetic Dentistry - Right Overlay */}
       <Section
         className="section"
-        backgroundImage={img5}
         style={{ overflow: "hidden" }}
-        backgroundClassName="background"
-        backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
-        scrollOffset={["start start", "end start"]}
-        contentClassName="content-overlay-right"
-        contentAnimation={AnimationType.NONE}
-        contentStyle={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          padding: "2rem",
+        background={{ image: img5, className: "background" }}
+        content={{
+          className: "content-overlay-right",
+          style: {
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            padding: "2rem",
+          },
         }}
       >
         <h2 style={{ color: "white" }}>Cosmetic Dentistry</h2>
@@ -80,18 +71,16 @@ const Services: React.FC = () => {
       <Section
         className="section"
         style={{ overflow: "hidden" }}
-        backgroundImage={img6}
-        backgroundClassName="background"
-        backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
-        scrollOffset={["start start", "end start"]}
-        contentClassName="content-overlay-left"
-        contentAnimation={AnimationType.NONE}
-        contentStyle={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          padding: "2rem",
+        background={{ image: img6, className: "background" }}
+        content={{
+          className: "content-overlay-left",
+          style: {
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            padding: "2rem",
+          },
         }}
       >
         <h2 style={{ color: "white" }}>Emergency Services</h2>
@@ -104,8 +93,7 @@ const Services: React.FC = () => {
       <Section
         className="section"
         style={{ overflow: "hidden" }}
-        contentClassName="content-plain"
-        contentAnimation={AnimationType.NONE}
+        content={{ className: "content-plain" }}
       >
         <h2>Ready for your healthiest smile yet?</h2>
         <p>
