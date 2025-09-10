@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.webp";
 import "./Header.css";
 
 const Header: React.FC = () => {
@@ -21,9 +22,12 @@ const Header: React.FC = () => {
     >
       <div className="header-content">
         <div className="logo">
-          <span onClick={handleLogoClick} style={{ cursor: "pointer" }}>
-            Dr. Joe's
-          </span>
+          <img
+            src={logo}
+            style={{ height: 100 }}
+            alt="R2 Media Logo"
+            onClick={handleLogoClick}
+          />
         </div>
         <button
           className="hamburger"

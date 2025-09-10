@@ -11,6 +11,7 @@
 
 /* Hero Section */
 .section-hero {
+  height:100vh;
   position: relative;
   overflow: hidden;
 }
@@ -37,7 +38,7 @@
 }
 
 .section-hero h1 span {
-  color: #ff005f;
+  color: rgb(205,0,1)
 }
 /*  */
 

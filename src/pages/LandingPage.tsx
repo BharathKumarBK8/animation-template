@@ -1,5 +1,5 @@
 import AutoPaginatedTestimonials from "../components/AutoPaginatedTestimonials";
-import heroBg from "../assets/hero-bg.jpg";
+import heroBg from "../assets/heroBg.webp";
 import img1 from "../assets/img1.jpg";
 import img2 from "../assets/img2.jpg";
 import img3 from "../assets/img3.jpg";
@@ -24,10 +24,16 @@ const LandingPage: React.FC = () => {
         backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
         scrollOffset={["start start", "end start"]}
       >
-        <h1 style={{ color: "white" }}>Brighten Your Smile Today</h1>
+        <h1 style={{ color: "white" }}>
+          We Bring <span>Ideas</span> to Life
+        </h1>
         <p style={{ color: "whitesmoke" }}>
-          Your trusted family dental care in the heart of the city.
+          At <strong>R2 Media</strong>, we craft unforgettable experiences
+          through <strong>Event Management</strong>,{" "}
+          <strong>Video Production</strong>, <strong>Photography</strong>, and{" "}
+          <strong>Creative Advertising</strong>.
         </p>
+        <button className="cta">Let’s Create Together</button>
       </Section>
       <Section
         className="section"

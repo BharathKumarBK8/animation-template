@@ -18,23 +18,24 @@ img, .card, .list-item, .hero h1 {
   contain: layout paint style;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #ff005f, #ff4081);
+.cta{
+  display: inline-block;
+  background: rgb(34,53,106);
   color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  font-size: 1rem;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 4px 15px rgba(255, 0, 95, 0.3);
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  border: none;
+  outline: none;
+  box-shadow: 0 8px 15px rgba(34, 53, 106, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  text-decoration: none;
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 0, 95, 0.4);
-  background: linear-gradient(135deg, #e6004d, #ff4081);
+.cta:hover,
+.cta:focus {
+  background: #1b2b59;
+  box-shadow: 0 12px 20px rgba(27, 43, 89, 0.4);
+  outline: none;
 }

@@ -1,6 +1,6 @@
 import Section from "../components/Section";
 import { AnimationType } from "../utils/animationHooks";
-import heroBg from "../assets/hero-bg.jpg";
+import heroBg from "../assets/heroBg.webp";
 
 const ThreeDShowcase: React.FC = () => {
   return (
