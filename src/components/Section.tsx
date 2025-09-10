@@ -3,6 +3,7 @@ import { useScroll, motion } from "framer-motion";
 import { useScrollAnimation, AnimationType } from "../utils/animationHooks";
 
 interface SectionProps {
+  id?: string;
   children?: ReactNode;
   className?: string;
   style?: CSSProperties;
@@ -20,6 +21,7 @@ interface SectionProps {
 }
 
 const Section: React.FC<SectionProps> = ({
+  id,
   children,
   backgroundAnimation = AnimationType.NONE,
   contentAnimation = AnimationType.NONE,
@@ -134,7 +136,7 @@ const Section: React.FC<SectionProps> = ({
   };
 
   return (
-    <motion.section ref={ref} className={className} style={style}>
+    <motion.section id={id} ref={ref} className={className} style={style}>
       {(backgroundClassName || backgroundImage || backgroundElement) && (
         <motion.div
           className={backgroundClassName}

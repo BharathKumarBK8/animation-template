@@ -10,9 +10,15 @@ import NotFound from "./pages/NotFound";
 import Footer from "./components/Footer/Footer";
 
 const App: React.FC = () => {
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div className="App">
-      <Header />
+      <Header onNavigate={scrollToSection} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="*" element={<NotFound />} />

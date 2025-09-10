@@ -13,6 +13,7 @@ const LandingPage: React.FC = () => {
   return (
     <>
       <Section
+        id="hero"
         contentAnimation={AnimationType.TRANSLATE_Y}
         contentStyle={{
           transition: "transform 0.3s ease",
@@ -98,6 +99,7 @@ const LandingPage: React.FC = () => {
         <button className="btn-primary">Book Now</button>
       </Section> */}
       <Section
+        id="contact"
         className="section"
         contentStyle={{ transition: "transform 0.3s ease" }}
         contentAnimation={AnimationType.TRANSLATE_Y}
