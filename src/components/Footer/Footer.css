@@ -1,5 +1,5 @@
 .footer {
-  background: linear-gradient(180deg, #0e0f12, #0a0a0a);
+  background: #fff;
   padding: 1.5rem 0;
   color: #6b7280;
   font-size: 0.875rem;
@@ -30,7 +30,7 @@
 }
 
 .social-links a:hover {
-  color: #ff005f;
+  opacity: 0.7;
 }
 
 

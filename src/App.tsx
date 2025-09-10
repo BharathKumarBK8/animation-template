@@ -6,13 +6,8 @@ import "./css/Section.css";
 import "./css/Background.css";
 import Header from "./components/Header/Header";
 import LandingPage from "./pages/LandingPage";
-import AboutPage from "./pages/AboutPage";
 import NotFound from "./pages/NotFound";
-import ContactPage from "./pages/ContactPage";
 import Footer from "./components/Footer/Footer";
-import BookingsPage from "./pages/BookingsPage";
-import Services from "./pages/Services";
-import ThreeDShowcase from "./pages/Three3DShowcase";
 
 const App: React.FC = () => {
   return (
@@ -20,10 +15,7 @@ const App: React.FC = () => {
       <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/bookings" element={<BookingsPage />} />
-        <Route path="*" element={<ThreeDShowcase />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>

@@ -1,11 +1,11 @@
 import React from "react";
 import "./GalleryGrid.css";
 
-interface GalleryItem {
+export interface GalleryItem {
   id: number;
   title: string;
   description: string;
-  image: string;
+  images: string[];
   date?: string;
   category?: string;
 }
@@ -37,15 +37,28 @@ const GalleryGrid: React.FC<GalleryGridProps> = ({
           className="gallery-card"
           onClick={() => onItemClick?.(item.id)}
         >
-          <img src={item.image} alt={item.title} />
-          <div className="gallery-content">
+          {/* Top Section */}
+          <div className="gallery-top">
+            <h3>{item.title}</h3>
+          </div>
+
+          {/* Cover Image */}
+          <div className="gallery-image-wrapper">
+            <img
+              src={item.images[0]}
+              alt={item.title}
+              className="gallery-thumbnail"
+            />
+          </div>
+
+          {/* Bottom Section */}
+          <div className="gallery-bottom">
             {showDate && item.date && (
               <div className="gallery-date">{item.date}</div>
             )}
             {item.category && (
               <div className="gallery-category">{item.category}</div>
             )}
-            <h3>{item.title}</h3>
             <p>{item.description}</p>
             <div className="gallery-action">{actionText}</div>
           </div>
