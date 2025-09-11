@@ -225,3 +225,19 @@
   max-width: 1000px;
   margin: 0 auto;
 }
+@media (max-width: 768px) {
+  .content-overlay-left,
+  .content-overlay-right {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    padding: 2rem 1rem;
+    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .background {
+    background-position: center top; /* better focus on important image area */
+  }
+}

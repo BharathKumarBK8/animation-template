@@ -5,31 +5,32 @@ import GalleryGrid, {
 import ImageCarouselModal from "../components/ImageCarouselModal/ImageCarouselModal";
 import event1 from "../assets/event1.jpg";
 import event2 from "../assets/event2.jpg";
-import img2 from "../assets/img2.jpg";
-import img3 from "../assets/img3.jpg";
+import section1 from "../assets/section1.jpg";
+import section2 from "../assets/section2.jpg";
+import section3 from "../assets/section3.jpg";
 
-const BlogPage: React.FC = () => {
+const EventsPage: React.FC = () => {
   const [selectedImages, setSelectedImages] = useState<string[] | null>(null);
 
-  const blogPosts: GalleryItem[] = [
+  const eventItems: GalleryItem[] = [
     {
       id: 1,
       title: "Sample Event 1",
       description: "Sample Description 1",
-      images: [event1, img2, img3], // Multiple images
+      images: [event1, section1, section2],
       date: "Month Day, Year",
     },
     {
       id: 2,
       title: "Sample Event 2",
       description: "Sample Description 2",
-      images: [event2, img3], // Another set
+      images: [event2, section2, section3],
       date: "Month Day, Year",
     },
   ];
 
   const handleCardClick = (id: number) => {
-    const selectedPost = blogPosts.find((post) => post.id === id);
+    const selectedPost = eventItems.find((post) => post.id === id);
     if (selectedPost) {
       setSelectedImages(selectedPost.images);
     }
@@ -51,7 +52,7 @@ const BlogPage: React.FC = () => {
         </p>
 
         <GalleryGrid
-          items={blogPosts}
+          items={eventItems}
           onItemClick={handleCardClick}
           showDate={true}
           actionText="Read More →"
@@ -66,4 +67,4 @@ const BlogPage: React.FC = () => {
   );
 };
 
-export default BlogPage;
+export default EventsPage;

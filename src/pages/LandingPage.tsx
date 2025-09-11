@@ -1,12 +1,10 @@
-import AutoPaginatedTestimonials from "../components/AutoPaginatedTestimonials";
 import EventsPage from "../pages/EventsPage";
 import heroBg from "../assets/heroBg.webp";
-import img1 from "../assets/img1.jpg";
-import img2 from "../assets/img2.jpg";
-import img3 from "../assets/img3.jpg";
-import ParallaxGallery from "../components/ParallaxGallery/ParallaxGallery";
-import NumberReveal from "../components/NumberReveal/NumberReveal";
+import section4 from "../assets/section4.jpg";
+import section5 from "../assets/section5.jpg";
+import section6 from "../assets/section6.jpg";
 import Section from "../components/Section";
+import Form from "../components/Form";
 import { AnimationType } from "../utils/animationHooks";
 
 const LandingPage: React.FC = () => {
@@ -14,17 +12,16 @@ const LandingPage: React.FC = () => {
     <>
       <Section
         id="hero"
-        contentAnimation={AnimationType.TRANSLATE_Y}
-        contentStyle={{
-          transition: "transform 0.3s ease",
-          zIndex: "1",
-        }}
         className="section section-hero"
+        scrollOffset={["start start", "end start"]}
+        backgroundClassName="background"
         backgroundImage={heroBg}
         backgroundStyle={{ inset: "-12%", backgroundPosition: "center" }}
-        backgroundClassName="background"
         backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
-        scrollOffset={["start start", "end start"]}
+        contentAnimation={AnimationType.TRANSLATE_Y}
+        contentStyle={{
+          zIndex: "1",
+        }}
       >
         <h1 style={{ color: "white" }}>
           We Bring <span>Ideas</span> to Life
@@ -37,67 +34,136 @@ const LandingPage: React.FC = () => {
         </p>
         <button className="cta">Let’s Create Together</button>
       </Section>
-      <EventsPage />
-
-      {/* <Section
-        className="section"
-        contentClassName="content-grid"
-        contentAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
-        scrollOffset={["start end", "end start"]}
+      <Section id="works">
+        <EventsPage />
+      </Section>
+      <Section
+        id="services"
+        /*         style={{
+          paddingLeft: "2rem",
+          paddingRight: "2rem",
+          paddingTop: "4rem",
+          paddingBottom: "4rem",
+        }} */
       >
-        <div className="card">
-          <h2>General Dentistry</h2>
-          <p>Cleanings, fillings, and routine checkups.</p>
-        </div>
-        <div className="card">
-          <h2>Cosmetic Dentistry</h2>
-          <p>Whitening, veneers, and smile makeovers.</p>
-        </div>
-        <div className="card">
-          <h2>Emergency Services</h2>
-          <p>Same-day appointments for dental emergencies.</p>
-        </div>
-      </Section> */}
-      {/*       <Section
-        className="section"
-        style={{ background: "linear-gradient(180deg, #EDEDE9, #F0EFEF)" }}
-        contentClassName="content-testimonial"
-        contentAnimation={AnimationType.NONE}
-        scrollOffset={["start end", "end start"]}
+        <h1
+          style={{
+            textAlign: "center",
+            marginBottom: "3rem",
+            fontSize: "2.5rem",
+          }}
+        >
+          Our Services
+        </h1>
+        <Section
+          className="section"
+          style={{ overflow: "hidden" }}
+          backgroundImage={section4}
+          backgroundClassName="background"
+          backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
+          scrollOffset={["start start", "end start"]}
+          contentClassName="content-overlay-left"
+          contentStyle={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            padding: "2rem",
+          }}
+          contentAnimation={AnimationType.NONE}
+        >
+          <h2 style={{ color: "white" }}>Event Production Hub</h2>
+          <p style={{ color: "whitesmoke" }}>
+            From concept to curtain call — we bring your events to life with
+            professional-grade planning, filming, and production.
+          </p>
+        </Section>
+        <Section
+          className="section"
+          backgroundImage={section5}
+          style={{ overflow: "hidden" }}
+          backgroundClassName="background"
+          backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
+          scrollOffset={["start start", "end start"]}
+          contentClassName="content-overlay-right"
+          contentAnimation={AnimationType.NONE}
+          contentStyle={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            padding: "2rem",
+          }}
+        >
+          <h2 style={{ color: "white" }}>Documentary Filmmaking</h2>
+          <p style={{ color: "whitesmoke" }}>
+            Real stories, powerfully told. We specialize in documentary
+            production that informs, inspires, and resonates.
+          </p>
+        </Section>
+        <Section
+          className="section"
+          style={{ overflow: "hidden" }}
+          backgroundImage={section6}
+          backgroundClassName="background"
+          backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
+          scrollOffset={["start start", "end start"]}
+          contentClassName="content-overlay-left"
+          contentAnimation={AnimationType.NONE}
+          contentStyle={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            padding: "2rem",
+          }}
+        >
+          <h2 style={{ color: "white" }}>Talent Shows & Competitions</h2>
+          <p style={{ color: "whitesmoke" }}>
+            We capture every spotlight moment — from performances to judging —
+            with cinematic quality and seamless coordination.
+          </p>
+        </Section>
+      </Section>
+      <Section
+        id="contact"
+        contentAnimation={AnimationType.SLIDE_UP}
+        useWhileInView
+        once
+        contentClassName="contact-section-content"
       >
-        <AutoPaginatedTestimonials />
-      </Section> */}
-      {/*       <ParallaxGallery
-        title="Our Works"
-        description="A showcase of our recent projects and success stories."
-        images={[
-          { src: img1, alt: "Image 1", animationType: "img1Y" },
-          { src: img2, alt: "Image 2", animationType: "img2Y" },
-          { src: img3, alt: "Image 3", animationType: "img3Y" },
-        ]}
-      /> */}
-
-      {/*       <NumberReveal
-        title="Our Impact"
-        stats={[
-          { value: 10, label: "Years Serving the Community", suffix: "+" },
-          { value: 5000, label: "Happy Patients", suffix: "+" },
-          { value: 5, label: "Average Google Rating", suffix: "★" },
-        ]}
-        className="section"
-      /> */}
-      {/*       <Section
-        className="section"
-        contentClassName="content-callout"
-        contentAnimation={AnimationType.ZOOM_IN}
-        scrollOffset={["start end", "end start"]}
-      >
-        <h2 style={{ color: "white" }}>Ready to Smile Brighter?</h2>
-        <p style={{ color: "whitesmoke" }}>
-          Book your appointment online or call us today!
-        </p>
-        <button className="btn-primary">Book Now</button>
-      </Section> */}
+        <h2 style={{ textAlign: "center", marginBottom: "1rem" }}>
+          Enquiry / Booking Form
+        </h2>
+        <Form
+          fields={[
+            {
+              name: "name",
+              type: "text",
+              placeholder: "Your Name",
+              required: true,
+            },
+            {
+              name: "email",
+              type: "email",
+              placeholder: "Your Email",
+              required: true,
+            },
+            {
+              name: "phone",
+              type: "tel",
+              placeholder: "Phone Number (optional)",
+            },
+            {
+              name: "message",
+              type: "textarea",
+              placeholder: "Your Message",
+              required: true,
+              rows: 6,
+            },
+          ]}
+        />
+      </Section>
       <Section
         id="contact"
         className="section"

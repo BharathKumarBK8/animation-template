@@ -136,7 +136,7 @@ export const useScrollAnimation = (
     case AnimationType.SCALE:
       return { scale: basicScale };
     case AnimationType.TRANSLATE_Y:
-      return { y: basicTranslateY };
+      return { y: basicTranslateY, transition: "transform 0.3s ease" };
     case AnimationType.OPACITY:
       return { opacity: basicOpacity };
     case AnimationType.ROTATE:

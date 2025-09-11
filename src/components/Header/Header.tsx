@@ -39,8 +39,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
 
         <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
           <span onClick={() => handleNavigate("hero")}>Home</span>
-          <span onClick={() => handleNavigate("services")}>Services</span>
           <span onClick={() => handleNavigate("works")}>Our Works</span>
+          <span onClick={() => handleNavigate("services")}>Services</span>
           <span onClick={() => handleNavigate("contact")}>Contact Us</span>
         </nav>
 
