@@ -6,35 +6,25 @@ import img3 from "../assets/img3.jpg";
 import ParallaxGallery from "../components/ParallaxGallery/ParallaxGallery";
 import NumberReveal from "../components/NumberReveal/NumberReveal";
 import Section from "../components/Section";
-import { AnimationType } from "../utils/animationHooks";
 
 const LandingPage: React.FC = () => {
   return (
     <>
       <Section
-        contentAnimation={AnimationType.TRANSLATE_Y}
         contentStyle={{
           transition: "transform 0.3s ease",
           zIndex: "1",
         }}
         className="section section-hero"
-        backgroundImage={heroBg}
-        backgroundStyle={{ inset: "-12%", backgroundPosition: "center" }}
         backgroundClassName="background"
-        backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
-        scrollOffset={["start start", "end start"]}
+        backgroundImage={heroBg}
       >
         <h1 style={{ color: "white" }}>Brighten Your Smile Today</h1>
         <p style={{ color: "whitesmoke" }}>
           Your trusted family dental care in the heart of the city.
         </p>
       </Section>
-      <Section
-        className="section"
-        contentClassName="content-grid"
-        contentAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
-        scrollOffset={["start end", "end start"]}
-      >
+      <Section className="section" contentClassName="content-grid">
         <div className="card">
           <h2>General Dentistry</h2>
           <p>Cleanings, fillings, and routine checkups.</p>
@@ -52,8 +42,6 @@ const LandingPage: React.FC = () => {
         className="section"
         style={{ background: "linear-gradient(180deg, #EDEDE9, #F0EFEF)" }}
         contentClassName="content-testimonial"
-        contentAnimation={AnimationType.NONE}
-        scrollOffset={["start end", "end start"]}
       >
         <AutoPaginatedTestimonials />
       </Section>
@@ -76,12 +64,7 @@ const LandingPage: React.FC = () => {
         ]}
         className="section"
       />
-      <Section
-        className="section"
-        contentClassName="content-callout"
-        contentAnimation={AnimationType.ZOOM_IN}
-        scrollOffset={["start end", "end start"]}
-      >
+      <Section className="section" contentClassName="content-callout">
         <h2 style={{ color: "white" }}>Ready to Smile Brighter?</h2>
         <p style={{ color: "whitesmoke" }}>
           Book your appointment online or call us today!
@@ -91,8 +74,6 @@ const LandingPage: React.FC = () => {
       <Section
         className="section"
         contentStyle={{ transition: "transform 0.3s ease" }}
-        contentAnimation={AnimationType.TRANSLATE_Y}
-        scrollOffset={["start end", "end start"]}
       >
         <h2>Visit Us</h2>
         <p>

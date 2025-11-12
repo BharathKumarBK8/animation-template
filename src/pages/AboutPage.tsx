@@ -2,13 +2,11 @@ import React from "react";
 import Section from "../components/Section";
 import StaggeredReveal from "../components/StaggeredReveal/StaggeredReveal";
 import sampleDoctor from "../assets/sample-doctor.jpg";
-import { AnimationType } from "../utils/animationHooks";
 
 const About: React.FC = () => {
   return (
     <div>
       <Section
-        contentAnimation={AnimationType.TRANSLATE_Y}
         contentStyle={{
           transition: "transform 0.3s ease",
           zIndex: "1",
@@ -21,8 +19,6 @@ const About: React.FC = () => {
         backgroundImage={sampleDoctor}
         backgroundClassName="background"
         backgroundStyle={{ inset: "-10%", backgroundPosition: "center top" }}
-        backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
-        scrollOffset={["start end", "end start"]}
       >
         <h1 style={{ color: "white" }}>Meet Dr.Joe</h1>
         <p style={{ color: "whitesmoke" }}>
@@ -31,12 +27,7 @@ const About: React.FC = () => {
       </Section>
 
       {/* Biography Section */}
-      <Section
-        contentAnimation={AnimationType.TRANSLATE_Y_AND_OPACITY}
-        className="section"
-        scrollOffset={["start end", "end start"]}
-        contentClassName="card"
-      >
+      <Section className="section" contentClassName="card">
         <h2>About Dr. Joe</h2>
         <p>
           With over 15 years of experience in general and cosmetic dentistry,
@@ -47,12 +38,7 @@ const About: React.FC = () => {
       </Section>
 
       {/* Mission Section */}
-      <Section
-        contentAnimation={AnimationType.TRANSLATE_Y_AND_OPACITY}
-        className="section"
-        scrollOffset={["start end", "end start"]}
-        contentClassName="card"
-      >
+      <Section className="section" contentClassName="card">
         <h2>Our Mission</h2>
         <p>
           At Dr. Joe’s Dental Clinic, our mission is simple: to make every visit

@@ -1,19 +1,15 @@
 import React from "react";
 import Section from "../components/Section";
 import "./BookingsPage.css";
-import { AnimationType } from "../utils/animationHooks";
 
 const Bookings: React.FC = () => {
   return (
     <div>
       <Section
-        contentAnimation={AnimationType.TRANSLATE_Y}
         contentStyle={{ transition: "transform 0.3s ease" }}
         className="section section-hero"
         backgroundClassName="background"
         backgroundStyle={{ inset: "-10%", backgroundPosition: "center top" }}
-        backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
-        scrollOffset={["start end", "end start"]}
       >
         <h1>Book an Appointment</h1>
         <p>
@@ -23,11 +19,7 @@ const Bookings: React.FC = () => {
       </Section>
 
       {/* Booking Form Section */}
-      <Section
-        className="section"
-        contentClassName="card"
-        contentAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
-      >
+      <Section className="section" contentClassName="card">
         {/* Replace with your actual form or 3rd-party embed (like Calendly, Zocdoc, etc.) */}
         <form className="booking-form">
           <label>
@@ -63,12 +55,7 @@ const Bookings: React.FC = () => {
       </Section>
 
       {/* Optional Call to Action Section */}
-      <Section
-        className="section"
-        contentClassName="content-callout"
-        contentAnimation={AnimationType.TRANSLATE_Y_AND_OPACITY}
-        scrollOffset={["start end", "end start"]}
-      >
+      <Section className="section" contentClassName="content-callout">
         <h2 style={{ color: "white" }}>Prefer to call?</h2>
         <p style={{ color: "whitesmoke" }}>
           Reach us directly at <strong>(123) 456-7890</strong> or email{" "}

@@ -4,7 +4,6 @@ import img4 from "../assets/img4.jpg";
 import img5 from "../assets/img5.jpg";
 import img6 from "../assets/img6.jpg";
 import { useNavigate } from "react-router-dom";
-import { AnimationType } from "../utils/animationHooks";
 
 const Services: React.FC = () => {
   const handleButtonClick = () => {
@@ -17,7 +16,6 @@ const Services: React.FC = () => {
       {/* Hero */}
       <Section
         className="section section-hero"
-        contentAnimation={AnimationType.NONE}
         contentClassName="content-translateY"
       >
         <h1>Our Dental Services</h1>
@@ -33,8 +31,6 @@ const Services: React.FC = () => {
         style={{ overflow: "hidden" }}
         backgroundImage={img4}
         backgroundClassName="background"
-        backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
-        scrollOffset={["start start", "end start"]}
         contentClassName="content-overlay-left"
         contentStyle={{
           display: "flex",
@@ -43,7 +39,6 @@ const Services: React.FC = () => {
           alignItems: "flex-start",
           padding: "2rem",
         }}
-        contentAnimation={AnimationType.NONE}
       >
         <h2 style={{ color: "white" }}>General Dentistry</h2>
         <p style={{ color: "whitesmoke" }}>
@@ -58,10 +53,7 @@ const Services: React.FC = () => {
         backgroundImage={img5}
         style={{ overflow: "hidden" }}
         backgroundClassName="background"
-        backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
-        scrollOffset={["start start", "end start"]}
         contentClassName="content-overlay-right"
-        contentAnimation={AnimationType.NONE}
         contentStyle={{
           display: "flex",
           flexDirection: "column",
@@ -82,10 +74,7 @@ const Services: React.FC = () => {
         style={{ overflow: "hidden" }}
         backgroundImage={img6}
         backgroundClassName="background"
-        backgroundAnimation={AnimationType.SCALE_AND_TRANSLATE_Y}
-        scrollOffset={["start start", "end start"]}
         contentClassName="content-overlay-left"
-        contentAnimation={AnimationType.NONE}
         contentStyle={{
           display: "flex",
           flexDirection: "column",
@@ -105,7 +94,6 @@ const Services: React.FC = () => {
         className="section"
         style={{ overflow: "hidden" }}
         contentClassName="content-plain"
-        contentAnimation={AnimationType.NONE}
       >
         <h2>Ready for your healthiest smile yet?</h2>
         <p>
